@@ -3,7 +3,7 @@ from helpers import DataGenerator
 from methods import courier
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def create_and_delete_courier():
     courier_data = DataGenerator.generate_courier_data()
     response = courier.create_courier(courier_data)
@@ -13,7 +13,7 @@ def create_and_delete_courier():
 
 
 @pytest.fixture
-def create_and_cancel_order(scope="function"):
+def create_and_cancel_order:
     order_data = DataGenerator.generate_order_data()
     response = courier.create_order(order_data)
     track = response.json()["track"]

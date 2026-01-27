@@ -1,9 +1,9 @@
 from typing import Any
 import pytest
 import allure
-from ..methods import courier
-from ..data import MSG
-from ..helpers import DataGenerator 
+from methods import courier
+from data import MSG
+from helpers import DataGenerator
 
 
 @allure.feature("Авторизация курьера")
