@@ -10,18 +10,11 @@ from helpers import DataGenerator
 class TestCreateCourier:
     
     @allure.title("Успешное создание курьера")
-    def test_create_courier_success_shows_ok_true(self):
-        courier_data = DataGenerator.generate_courier_data()
-        
-        with allure.step("Создаем нового курьера"):
-            response = courier.create_courier(courier_data)
-        
-        assert response.status_code == 201, \
-            f"Ожидался код ответа 201 (Created), получен {response.status_code}"
-        
-        assert response.json() == {"ok": True}, \
-            f"Ожидался ответ {{'ok': True}}, получен {response.json()}"
-        
+    def test_create_courier_success_shows_ok_true(self, courier_data):
+        response = courier.create_courier(courier_data)
+        assert response.status_code == 201
+        assert response.json() == {"ok": True}
+
     
     @allure.title("Нельзя создать двух одинаковых курьеров")
     def test_create_duplicate_courier_shows_error(self, create_and_delete_courier: tuple[dict[str, str], Any]):
